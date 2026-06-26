@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSDB | Comma Separated Database</title>
+    <meta name="description" content="CSDB is a human-readable, single-file database format for portable schemas, CSV data, relationships, and machine-readable indexes.">
+    <link rel="canonical" href="https://csvdatabase.net/">
+    <meta property="og:title" content="CSDB | Comma Separated Database">
+    <meta property="og:description" content="A human-readable, single-file database format for portable relational data.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://csvdatabase.net/">
+    <meta name="theme-color" content="rgb(81, 173, 120)">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="/" aria-label="CSDB home">
+        <img class="brand-mark" src="assets/csdb-logo.png" alt="" aria-hidden="true">
+        <span>CSDB</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <details class="nav-menu">
+          <summary>Documentation</summary>
+          <div class="nav-menu-panel">
+            <a href="https://specs.csvdatabase.net/">Specification</a>
+            <a href="https://typescript.csvdatabase.net/">TypeScript</a>
+            <a href="https://python.csvdatabase.net/">Python</a>
+          </div>
+        </details>
+        <details class="nav-menu">
+          <summary>GitHub</summary>
+          <div class="nav-menu-panel">
+            <a href="https://github.com/csvdatabase/specs">Specification</a>
+            <a href="https://github.com/csvdatabase/csdb-typescript">TypeScript</a>
+            <a href="https://github.com/csvdatabase/csdb-python">Python</a>
+          </div>
+        </details>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-specimen" aria-hidden="true">
+          <pre>--- csdb
+format: CSDB
+version: 1
+name: payroll
+tables:
+  - workers
+  - sessions
+
+--- table:workers:schema
+columns:
+  id: text
+  email: text
+primary_key:
+  columns: [id]
+
+--- table:workers:data
+id,email
+w_001,ada@example.com
+w_002,grace@example.com</pre>
+        </div>
+        <div class="hero-content">
+          <div class="hero-title-row">
+            <img class="hero-mark" src="assets/csdb-logo.png" alt="" aria-hidden="true">
+            <h1 id="hero-title">CSDB</h1>
+          </div>
+          <p class="hero-copy">A Comma Separated Database (CSDB) is a human-readable, text-based database format that can be used both as a portable exchange format and as a lightweight AI legible backend.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button-primary" href="#format">Format</a>
+            <a class="button" href="#libraries">Libraries</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary" aria-label="CSDB summary">
+        <div>
+          <span class="summary-label">File</span>
+          <strong>One text document</strong>
+        </div>
+        <div>
+          <span class="summary-label">Data</span>
+          <strong>Multiple relational tables</strong>
+        </div>
+        <div>
+          <span class="summary-label">Speed</span>
+          <strong>Optional machine indexes</strong>
+        </div>
+      </section>
+
+      <section class="section" id="format" aria-labelledby="format-title">
+        <div class="section-heading">
+          <h2 id="format-title">Plain text formatted database.</h2>
+        </div>
+        <div class="format-layout">
+          <div class="format-copy">
+            <p>CSDB keeps metadata, table schemas, and CSV data together in one UTF-8 file. Humans can edit and review it in a diff, while tools can validate structure, types, keys, relationships, and machine indexes.</p>
+          </div>
+          <div class="format-flow" aria-label="CSDB format flow">
+            <div class="format-connector format-connector-border">
+              <div class="format-connector-copy">
+                <span>first, define database metadata</span>
+              </div>
+            </div>
+            <article class="format-step">
+              <pre class="code-window"><code>--- csdb
+format: CSDB
+version: 1
+name: payroll
+tables:
+  - workers
+  - sessions</code></pre>
+            </article>
+            <div class="format-connector">
+              <div class="format-connector-copy">
+                <span>then, define a schema in YAML</span>
+              </div>
+            </div>
+            <article class="format-step">
+              <pre class="code-window"><code>--- table:sessions:schema
+name: sessions
+columns:
+  id: text
+  worker_id: text
+  start_time: timestamp
+required:
+  - id
+  - worker_id
+primary_key:
+  columns: [id]</code></pre>
+            </article>
+            <div class="format-connector">
+              <div class="format-connector-copy">
+                <span>finally, store records in csv</span>
+              </div>
+            </div>
+            <article class="format-step">
+              <pre class="code-window"><code>--- table:sessions:data
+id,worker_id,start_time
+s_001,w_001,2026-01-01T09:00:00Z
+s_002,w_001,2026-01-02T09:00:00Z</code></pre>
+            </article>
+          </div>
+          <p class="format-note">Its that simple...</p>
+        </div>
+      </section>
+
+      <section class="section section-muted" id="libraries" aria-labelledby="libraries-title">
+        <div class="section-heading">
+          <h2 id="libraries-title">Designed for native codebases across programming languages.</h2>
+        </div>
+        <div class="library-grid">
+          <article class="library-card library-card-primary">
+            <div class="library-card-header">
+              <div>
+                <h3>TypeScript Library</h3>
+              </div>
+              <div class="library-actions">
+                <a class="link-button" href="https://typescript.csvdatabase.net/"><span>Documentation</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
+                <a class="link-button" href="https://github.com/csvdatabase/csdb-typescript"><span>GitHub</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
+              </div>
+            </div>
+            <p>Install from npm in native TypeScript projects, open CSDB files directly, and use table methods or SQL without a language bridge.</p>
+            <div class="install-callout" aria-label="TypeScript install command">
+              <span>Install</span>
+              <code>npm install @csvdatabase/csdb</code>
+            </div>
+            <div class="library-code-grid">
+              <div>
+                <span>TypeScript method</span>
+                <pre class="code-window code-window-small"><code>import { openCSDB } from "@csvdatabase/csdb";
+
+const db = await openCSDB("payroll.csdb");
+const sessions = await db.table("sessions").findMany({
+  where: { worker_id: "w_001" }
+});</code></pre>
+              </div>
+              <div>
+                <span>SQL method</span>
+                <pre class="code-window code-window-small"><code>const sessions = await db.sql`
+  SELECT *
+  FROM sessions
+  WHERE worker_id = ${"w_001"}
+`;</code></pre>
+              </div>
+            </div>
+          </article>
+          <article class="library-card">
+            <div class="library-card-header">
+              <div>
+                <h3>Python Library</h3>
+              </div>
+              <div class="library-actions">
+                <a class="link-button" href="https://python.csvdatabase.net/"><span>Documentation</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
+                <a class="link-button" href="https://github.com/csvdatabase/csdb-python"><span>GitHub</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
+              </div>
+            </div>
+            <p>Install with pip in native Python projects, open CSDB files directly, and use Pythonic table methods or SQL without a language bridge.</p>
+            <div class="install-callout" aria-label="Python install command">
+              <span>Install</span>
+              <code>pip install csdb</code>
+            </div>
+            <div class="library-code-grid">
+              <div>
+                <span>Native Python method</span>
+                <pre class="code-window code-window-small"><code>from csdb import open_csdb
+
+db = open_csdb("payroll.csdb")
+sessions = db.table("sessions").find_many(
+    where={"worker_id": "w_001"}
+)</code></pre>
+              </div>
+              <div>
+                <span>SQL method</span>
+                <pre class="code-window code-window-small"><code>sessions = db.sql(
+    "SELECT * FROM sessions WHERE worker_id = ?",
+    ["w_001"],
+)</code></pre>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="section-heading">
+          <h2 id="features-title">Created to be simplistic to use.</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Git-friendly</h3>
+            <p>Text-first storage keeps schema and data changes visible in ordinary code review.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Relational</h3>
+            <p>Tables can define primary keys, unique constraints, indexes, and foreign keys.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Portable</h3>
+            <p>The specification defines stable sections, type metadata, validation rules, and CSV serialization.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Human editable</h3>
+            <p>People can read and modify CSDB files with normal text editors and source-control tools.</p>
+          </article>
+          <article class="feature-card">
+            <h3>AI legible</h3>
+            <p>Models can read the schema, relationships, comments, and records plainly without binary decoding.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Practically fast</h3>
+            <p>Optional machine indexes maximize practical lookup speed while preserving the plain-text source of truth.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-cta" aria-labelledby="cta-title">
+        <div class="cta-panel">
+          <div>
+            <h2 id="cta-title">Try it yourself and contribute.</h2>
+            <p>Download a small CSDB file, inspect it in a text editor, and help shape the format and libraries as they grow.</p>
+          </div>
+          <div class="cta-actions" aria-label="Try CSDB actions">
+            <a class="button button-primary" href="assets/sample-payroll.csdb" download>Download sample database</a>
+            <a class="button" href="https://github.com/sponsors/csvdatabase">Donate</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script>
+      const header = document.querySelector('.site-header');
+      const heroTitle = document.querySelector('.hero-title-row');
+      const navMenus = Array.from(document.querySelectorAll('.nav-menu'));
+
+      function updateHeaderVisibility() {
+        if (!header || !heroTitle) return;
+        const titleBottom = heroTitle.getBoundingClientRect().bottom;
+        header.classList.toggle('is-visible', titleBottom <= 0);
+      }
+
+      function closeNavMenus(exceptMenu) {
+        navMenus.forEach((menu) => {
+          if (menu !== exceptMenu) menu.open = false;
+        });
+      }
+
+      navMenus.forEach((menu) => {
+        menu.addEventListener('toggle', () => {
+          if (menu.open) closeNavMenus(menu);
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Element)) return;
+        if (!event.target.closest('.nav-menu')) closeNavMenus();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeNavMenus();
+      });
+
+      updateHeaderVisibility();
+      window.addEventListener('scroll', updateHeaderVisibility, { passive: true });
+      window.addEventListener('resize', updateHeaderVisibility);
+    </script>
+
+    <footer class="site-footer" aria-label="Site footer">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="CSDB home">
+          <img class="brand-mark" src="assets/csdb-logo.png" alt="" aria-hidden="true">
+          <span>CSDB</span>
+        </a>
+        <p>A Comma Separated Database (CSDB) is a human-readable, text-based database format that can be used both as a portable exchange format and as a lightweight AI legible backend.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <div class="footer-link-group">
+          <span>Documentation</span>
+          <a href="https://specs.csvdatabase.net/">Specification</a>
+          <a href="https://typescript.csvdatabase.net/">TypeScript</a>
+          <a href="https://python.csvdatabase.net/">Python</a>
+        </div>
+        <div class="footer-link-group">
+          <span>GitHub</span>
+          <a href="https://github.com/csvdatabase/specs">Specification</a>
+          <a href="https://github.com/csvdatabase/csdb-typescript">TypeScript</a>
+          <a href="https://github.com/csvdatabase/csdb-python">Python</a>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>

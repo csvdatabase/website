@@ -1,0 +1,48 @@
+--- csdb
+format: CSDB
+version: 1
+name: sample_payroll
+tables:
+  - workers
+  - sessions
+
+--- table:workers:schema
+name: workers
+columns:
+  id: text
+  name: text
+  email: email
+required:
+  - id
+  - name
+  - email
+primary_key:
+  columns: [id]
+
+--- table:workers:data
+id,name,email
+w_001,Ada Lovelace,ada@example.com
+w_002,Grace Hopper,grace@example.com
+
+--- table:sessions:schema
+name: sessions
+columns:
+  id: text
+  worker_id: text
+  start_time: timestamp
+required:
+  - id
+  - worker_id
+  - start_time
+primary_key:
+  columns: [id]
+foreign_keys:
+  - columns: [worker_id]
+    references:
+      table: workers
+      columns: [id]
+
+--- table:sessions:data
+id,worker_id,start_time
+s_001,w_001,2026-01-01T09:00:00Z
+s_002,w_002,2026-01-02T09:00:00Z
