@@ -326,6 +326,18 @@ body::selection {
   width: 100%;
 }
 
+.development-callout {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  color: #7c2d12;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0 auto 2rem;
+  max-width: var(--section-width);
+  padding: 0.9rem 1rem;
+}
+
 .section h2 {
   font-size: 3.25rem;
   letter-spacing: 0;
