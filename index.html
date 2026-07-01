@@ -20,14 +20,7 @@
         <span>CSDB</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
-        <details class="nav-menu">
-          <summary>Documentation</summary>
-          <div class="nav-menu-panel">
-            <a href="https://specs.csvdatabase.net/">Specification</a>
-            <a href="https://typescript.csvdatabase.net/">TypeScript</a>
-            <a href="https://python.csvdatabase.net/">Python</a>
-          </div>
-        </details>
+        <a class="nav-link" href="https://docs.csvdatabase.net/">Documentation</a>
         <details class="nav-menu">
           <summary>GitHub</summary>
           <div class="nav-menu-panel">
@@ -69,8 +62,7 @@ w_002,grace@example.com</pre>
           </div>
           <p class="hero-copy">A Comma Separated Database (CSDB) is a human-readable, text-based database format that can be used both as a portable exchange format and as a lightweight AI legible backend.</p>
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="#format">Format</a>
-            <a class="button" href="#libraries">Libraries</a>
+            <a class="button button-primary" href="https://docs.csvdatabase.net/">Documentation</a>
           </div>
         </div>
       </section>
@@ -150,6 +142,7 @@ s_002,w_001,2026-01-02T09:00:00Z</code></pre>
       <section class="section section-muted" id="libraries" aria-labelledby="libraries-title">
         <div class="section-heading">
           <h2 id="libraries-title">Designed for native codebases across programming languages.</h2>
+          <p>Install CSDB in native TypeScript or Python projects, open files directly, and use table methods or SQL without a language bridge.</p>
         </div>
         <div class="library-grid">
           <article class="library-card library-card-primary">
@@ -158,11 +151,9 @@ s_002,w_001,2026-01-02T09:00:00Z</code></pre>
                 <h3>TypeScript Library</h3>
               </div>
               <div class="library-actions">
-                <a class="link-button" href="https://typescript.csvdatabase.net/"><span>Documentation</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
                 <a class="link-button" href="https://github.com/csvdatabase/csdb-typescript"><span>GitHub</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
               </div>
             </div>
-            <p>Install from npm in native TypeScript projects, open CSDB files directly, and use table methods or SQL without a language bridge.</p>
             <div class="install-callout" aria-label="TypeScript install command">
               <span>Install</span>
               <code>npm install @csvdatabase/csdb</code>
@@ -193,11 +184,9 @@ const sessions = await db.table("sessions").findMany({
                 <h3>Python Library</h3>
               </div>
               <div class="library-actions">
-                <a class="link-button" href="https://python.csvdatabase.net/"><span>Documentation</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
                 <a class="link-button" href="https://github.com/csvdatabase/csdb-python"><span>GitHub</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
               </div>
             </div>
-            <p>Install with pip in native Python projects, open CSDB files directly, and use Pythonic table methods or SQL without a language bridge.</p>
             <div class="install-callout" aria-label="Python install command">
               <span>Install</span>
               <code>pip install csdb</code>
@@ -318,10 +307,7 @@ sessions = db.table("sessions").find_many(
       </div>
       <nav class="footer-links" aria-label="Footer navigation">
         <div class="footer-link-group">
-          <span>Documentation</span>
-          <a href="https://specs.csvdatabase.net/">Specification</a>
-          <a href="https://typescript.csvdatabase.net/">TypeScript</a>
-          <a href="https://python.csvdatabase.net/">Python</a>
+          <a href="https://docs.csvdatabase.net/">Documentation</a>
         </div>
         <div class="footer-link-group">
           <span>GitHub</span>

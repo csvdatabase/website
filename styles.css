@@ -89,6 +89,15 @@ body::selection {
   position: relative;
 }
 
+.nav-link {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  display: inline-flex;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.65rem;
+}
+
 .nav-menu summary {
   align-items: center;
   border: 1px solid transparent;
@@ -322,6 +331,14 @@ body::selection {
   letter-spacing: 0;
   line-height: 1;
   margin: 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1rem 0 0;
+  max-width: 48rem;
 }
 
 #format .section-heading,
@@ -669,6 +686,11 @@ body::selection {
   }
 
   .nav-menu summary {
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+  }
+
+  .nav-link {
     padding-left: 0.45rem;
     padding-right: 0.45rem;
   }
