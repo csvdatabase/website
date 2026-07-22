@@ -1,11 +1,18 @@
 # CSDB Website
 
-This repository contains the static homepage for [csvdatabase.net](https://csvdatabase.net/).
+> **Start here:** Project-wide information, planning, and community resources
+> live in the [main CSDB repository](https://github.com/csvdatabase/csdb).
 
-The format specification is published separately at [specs.csvdatabase.net](https://specs.csvdatabase.net/).
+## Introduction
 
-## Deployments
+This repository contains the static source for
+[csvdatabase.net](https://csvdatabase.net/).
 
-The site deploys to GitHub Pages from `.github/workflows/deploy.yml` when a published release uses a major-version tag such as `v1` or `v1.0.0`. Non-major release tags are rejected by the workflow.
+## Development
 
-The deployed site uses `CNAME` for `csvdatabase.net`.
+The site uses plain HTML and CSS with no build step. Open `index.html` directly or
+run a local static server:
+
+```bash
+python3 -m http.server 8000
+```
