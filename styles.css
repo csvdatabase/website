@@ -239,6 +239,16 @@ body::selection {
   margin-top: 2rem;
 }
 
+.github-star-button {
+  align-items: center;
+  display: inline-flex;
+  min-height: 2.75rem;
+}
+
+.github-star-button iframe {
+  display: block;
+}
+
 .button {
   align-items: center;
   border: 1px solid rgba(17, 24, 39, 0.28);
