@@ -139,14 +139,14 @@ s_001,w_001,2026-01-01T09:00:00Z
 s_002,w_001,2026-01-02T09:00:00Z</code></pre>
             </article>
           </div>
-          <p class="format-note">Its that simple...</p>
+          <p class="format-note">It's that simple...</p>
         </div>
       </section>
 
       <section class="section section-muted" id="libraries" aria-labelledby="libraries-title">
         <div class="section-heading">
           <h2 id="libraries-title">Designed for native codebases across programming languages.</h2>
-          <p>Install CSDB in native TypeScript or Python projects, open files directly, and use table methods or SQL without a language bridge.</p>
+          <p>Install CSDB in TypeScript projects, open files directly, and use table methods or SQL without a language bridge. A native Python library is planned.</p>
         </div>
         <div class="library-grid">
           <article class="library-card library-card-primary">
@@ -168,49 +168,32 @@ s_002,w_001,2026-01-02T09:00:00Z</code></pre>
                 <pre class="code-window code-window-small"><code>import { openCSDB } from "@csvdatabase/csdb";
 
 const db = await openCSDB("payroll.csdb");
-const sessions = await db.table("sessions").findMany({
-  where: { worker_id: "w_001" }
-});</code></pre>
+const sessions = db.table("sessions")
+  .where({ worker_id: "w_001" })
+  .all();</code></pre>
               </div>
               <div>
                 <span>SQL method</span>
-                <pre class="code-window code-window-small"><code>const sessions = await db.sql`
-  SELECT *
-  FROM sessions
-  WHERE worker_id = ${"w_001"}
-`;</code></pre>
+                <pre class="code-window code-window-small"><code>const sessions = db.sql(
+  "SELECT * FROM sessions WHERE worker_id = ?",
+  ["w_001"]
+);</code></pre>
               </div>
             </div>
           </article>
           <article class="library-card">
             <div class="library-card-header">
               <div>
-                <h3>Python Library</h3>
+                <h3>Python Library (Planned)</h3>
               </div>
               <div class="library-actions">
                 <a class="link-button" href="https://github.com/csvdatabase/csdb-python"><span>GitHub</span><svg class="link-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg></a>
               </div>
             </div>
-            <div class="install-callout" aria-label="Python install command">
-              <span>Install</span>
-              <code>pip install csdb</code>
-            </div>
             <div class="library-code-grid">
               <div>
-                <span>Native Python method</span>
-                <pre class="code-window code-window-small"><code>from csdb import open_csdb
-
-db = open_csdb("payroll.csdb")
-sessions = db.table("sessions").find_many(
-    where={"worker_id": "w_001"}
-)</code></pre>
-              </div>
-              <div>
-                <span>SQL method</span>
-                <pre class="code-window code-window-small"><code>sessions = db.sql(
-    "SELECT * FROM sessions WHERE worker_id = ?",
-    ["w_001"],
-)</code></pre>
+                <span>Release status</span>
+                <p>The native Python implementation has not been built or published yet. Track its progress on GitHub.</p>
               </div>
             </div>
           </article>
